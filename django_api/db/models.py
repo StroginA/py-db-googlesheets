@@ -7,7 +7,6 @@ class Order(models.Model):
     deliveryDate = models.DateField("Delivery Date")
     class Meta:
         managed = True
-        db_table = 'orders'
 
     def __str__(self):
         return self.orderId

@@ -1,25 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    orders: []
+  }
+  componentDidMount = () => {
+    axios.get('http://localhost:8000/api/orders')
+    .then(res => {
+      console.log(res)
+      this.setState({orders: res.data})
+    })
+  }
+  render() {
+    return (
+      <div className="App">
+        <table>
+        <thead>
+          <tr>
+            <th>Номер заказа</th>
+            <th>Стоимость, $</th>
+            <th>Стоимость, руб</th>
+            <th>Срок поставки</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.state.orders.map(order => (
+              <tr key={order.orderId}>
+                <td>{order.orderId}</td>
+                <td>{order.costUSD}</td>
+                <td>{order.costRUB}</td>
+                <td>{order.deliveryDate}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+        </table>
+      </div>
+    )
+  }
 }
 
 export default App;

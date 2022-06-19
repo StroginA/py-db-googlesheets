@@ -1,5 +1,19 @@
 # How to run 
 
+## Python setup
+
+Navigate to %project_directory% and run:
+
+pip install virtualenv
+
+virtualenv venv
+
+
+Activate it by running /venv/Scripts/activate.bat
+
+Run pip install -r requirements.txt
+
+
 ## Configuring the database
 
 This project was set up on the DB cluster with English locale.
@@ -18,6 +32,16 @@ python manage.py migrate db
 ## Script
 
 Run python fetch_sheets.py
+
+## Setting up the React app
+
+From %project_directory% run npm install
+
+## Django-React app
+
+Setting
+
+Navigate to %project_directory% and run npm start
 
 ## Links
 

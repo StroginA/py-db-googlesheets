@@ -21,8 +21,7 @@ class Migration(migrations.Migration):
                 ('deliveryDate', models.DateField(verbose_name='Delivery Date')),
             ],
             options={
-                'db_table': 'orders',
-                'managed': True,
+                'managed': True
             },
         ),
     ]
